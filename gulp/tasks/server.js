@@ -18,7 +18,7 @@ export const initServer = () => {
     notify: false,
     logSnippet: false,
     port: 3000,
-    browser: 'google chrome',
+    //browser: 'google chrome',
   })
 }
 

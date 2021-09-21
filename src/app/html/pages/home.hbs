@@ -4,7 +4,13 @@
 
 
 <main class="page-content__main">
-n
+<section class='releases-section'>
+  <div class='releases-container'>
+    {{#each home.products}}
+      {{>blocks/product-card}}
+    {{/each}}
+  </div>
+</section>
 </main>
 
 
