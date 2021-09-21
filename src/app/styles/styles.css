@@ -1,0 +1,520 @@
+@charset "UTF-8";
+/*
+input: '10px', output: 10;
+input: 10px, output: 10px
+ */
+/*********************************************************/
+/******************** Media Queries **********************/
+/*********************************************************/
+/***
+  Миксин оперирует данными из массива $breakpoints. Для ширины и высоты указываются собственные параметры.
+  Массив `height` может безболезненно расширяться, без затрагивания кода самого миксина, просто добавляйте
+  свои значения. Массив `width` безболезненно расширяется только для значений, бОльших, чем `desktop`,
+  в остальных случаях, можно менять значения, а при добавлении новых ключей - необходимо заглянуть в исходник.
+
+  Миксин принимает 3 основных аргумента:
+    1. $breakpoint - передаваемый параметр, должен равняться одному из значений, указанных в массиве $breakpoints.
+
+    2. $statement - передаваемый параметр, который может быть трех видов для медиа-запросов `width`:
+      - down: применяется по умолчанию, и устанавливает правило `@media (max-width: ЗНАЧЕНИЕ)`. Следует понимать,
+        что берется не текущее значение брекпоинта, а последующее минус 1.
+        Например, брекпоинт `mobile` имеет значение 480px, но при этом правило будет создано со значением
+         следующего ключа - `tabletSmall: 768 - 1`. То есть получим => `@media (max-width: 767px)`.
+
+        *! для последнего значения в массиве (`desktop`) миксин примет вид `@media (min-width: ЗНАЧЕНИЕ)`. !*
+
+      - up: в случае, если необходимо задать правило от какого-то значения. То есть, всё, что выше значения.
+        Например, `(tablet, up)` => `@media (min-width: 1260px)`.
+
+      - only: устанавливает ограничение в +1 один шаг от текущего значения ключа. Например:
+        (tabletSmall, only) => `@media (min-width: 768px) and (max-width: 1023px)`.
+
+         *! При `mobile, only` установлено поведение: => `@media (max-width: 767px)`. !*
+         *! При `tablet, only` установлено поведение: => `@media (min-width: 768px) and (max-width: 1259px)`. !*
+         *! для последнего значения в массиве (`desktop`) миксин примет вид `@media (min-width: ЗНАЧЕНИЕ)`. !*
+
+     3. $isHeight - передаваемый булевый параметр, который меняет медиа-запросы с ширин на высоты.
+        По умолчанию отключен. При данном вызове необходимо передавать вторым аргументом параметр `down`.
+        Поведение по умолчанию => `@media (max-height: ЗНАЧЕНИЕ)`
+
+     Примеры вызова:
+      - высота:
+        @include media(sm, down, true) {
+          .card-test-block {
+            color: red;
+          }
+        } => @media (max-height:650px)
+
+      - ширина:
+        @include media(mobile) {
+            .card-test-block {
+              color: white;
+            }
+          } => @media (max-width: 767px)
+
+        @include media(tabletSmall, up) {
+          .card-test-block {
+            color: white;
+          }
+        } => @media (min-width: 1024px)
+
+        @include media(laptop, only) {
+          .card-test-block {
+            color: black;
+          }
+        } => @media (min-width: 1260px) and (max-width: 1499px)
+***/
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+header {
+  background-color: #ffffff;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+html {
+  font-family: "Poppins", "Arial", sans-serif;
+}
+
+a {
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+}
+
+li {
+  text-decoration: none;
+  list-style-type: none;
+}
+
+button {
+  outline: 0 !important;
+}
+
+::placeholder {
+  /* Firefox, Chrome, Opera */
+  color: #7e7e7e;
+}
+
+input:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #7e7e7e;
+}
+input::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #7e7e7e;
+}
+
+/* Изображения */
+.infinite-image {
+  width: 100%;
+  object-fit: contain;
+}
+
+.container {
+  padding: 0 55px;
+  margin: 0 auto;
+}
+@media (min-width: 1300px) {
+  .container {
+    max-width: 1270px;
+  }
+}
+
+._ml-1 {
+  margin-left: 0.5rem;
+}
+
+._mr-1 {
+  margin-right: 0.5rem;
+}
+
+.header-main {
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+  font-size: 0.875rem;
+  background-color: #fff;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: box-shadow 0.3s ease;
+}
+.header-main.scroll {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.header-main__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+.header-main__brand {
+  flex: 0 1 135px;
+}
+@media (min-width: 1024px) {
+  .header-main__toggle {
+    display: none;
+  }
+}
+.header-main__nav-list {
+  display: flex;
+  align-items: center;
+}
+@supports (gap: 10px) and (display: flex) {
+  .header-main__nav-list {
+    gap: 25px;
+  }
+}
+@supports not ((gap: 10px) and (display: flex)) {
+  .header-main__nav-list > * + * {
+    margin-left: 25px;
+  }
+}
+@media (min-width: 1260px) {
+  .header-main__actions {
+    flex: 0 1 135px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  @supports (gap: 10px) and (display: flex) {
+    .header-main__actions {
+      gap: 10px;
+    }
+  }
+  @supports not ((gap: 10px) and (display: flex)) {
+    .header-main__actions > * + * {
+      margin-left: 10px;
+    }
+  }
+}
+@media (max-width: 1259px) {
+  .header-main__actions {
+    display: none;
+  }
+}
+
+.footer-main {
+  color: #777777;
+  background: #0a0a0a;
+}
+.footer-main__container {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+@media (max-width: 1023px) {
+  .footer-main__container {
+    padding-top: 70px;
+  }
+}
+.footer-main__content {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+@media (max-width: 1023px) {
+  .footer-main__content {
+    grid-template-columns: 1fr;
+    grid-gap: 40px;
+  }
+}
+@media (max-width: 1023px) {
+  .footer-main__logo {
+    justify-self: center;
+  }
+}
+@media (min-width: 1024px) {
+  .footer-main__socials {
+    justify-content: flex-end;
+  }
+}
+@media (max-width: 1023px) {
+  .footer-main__socials {
+    justify-content: center;
+  }
+}
+.footer-main__copyright {
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-weight: 500;
+  font-size: 11px;
+}
+@media (min-width: 1024px) {
+  .footer-main__copyright {
+    text-align: right;
+  }
+}
+@media (max-width: 1023px) {
+  .footer-main__copyright {
+    text-align: center;
+  }
+}
+.footer-main__copyright a {
+  transition: color 350ms ease;
+  color: inherit;
+}
+.footer-main__copyright a:focus, .footer-main__copyright a:hover {
+  color: #fafafa;
+}
+
+.menu-item__link {
+  display: inline-block;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  text-align: center;
+  color: #7e7e7e;
+}
+.menu-item__link:hover {
+  color: #0b0b0b;
+}
+.menu-item__link--active {
+  position: relative;
+  transition: all 0.3s ease;
+}
+.menu-item__link--active::before {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  display: block;
+  height: 1px;
+  background-color: #7e7e7e;
+  content: "";
+}
+.menu-item__link--active:hover::before {
+  background-color: #0b0b0b;
+}
+
+.btn-inline {
+  display: inline-block;
+  text-align: center;
+  font-size: 0.875rem;
+  background: none;
+  border: none;
+  color: #7e7e7e;
+  cursor: pointer;
+}
+.btn-inline:hover {
+  color: #0b0b0b;
+}
+
+.btn-icon {
+  display: inline-flex;
+  place-items: center;
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 1rem;
+  background: none;
+  border: none;
+  color: #7e7e7e;
+  cursor: pointer;
+}
+.btn-icon:hover {
+  color: #0b0b0b;
+}
+.btn-icon svg {
+  font-size: inherit;
+  transition: color 0.3s ease;
+}
+
+.page-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.page-logo img {
+  height: 55px;
+}
+
+.footer-nav__list {
+  display: grid;
+  grid-template-columns: repeat(4, max-content);
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+@supports (gap: 10px) and (display: flex) {
+  .footer-nav__list {
+    gap: 20px;
+  }
+}
+@supports not ((gap: 10px) and (display: flex)) {
+  .footer-nav__list > * + * {
+    margin-left: 20px;
+  }
+}
+@media (max-width: 479px) {
+  .footer-nav__list {
+    grid-template-columns: repeat(2, max-content);
+  }
+}
+.footer-nav__link {
+  display: block;
+  color: #7e7e7e;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.3s ease-out;
+}
+.footer-nav__link:hover {
+  color: #d3d3d3;
+}
+
+.footer-socials {
+  display: flex;
+  text-align: center;
+}
+@supports (gap: 10px) and (display: flex) {
+  .footer-socials {
+    gap: 10px;
+  }
+}
+@supports not ((gap: 10px) and (display: flex)) {
+  .footer-socials > * + * {
+    margin-left: 10px;
+  }
+}
+.footer-socials__link {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  color: #7e7e7e;
+  border-radius: 30%;
+  box-shadow: 0 5px 15px -5px #00000070;
+}
+.footer-socials__link::before {
+  position: absolute;
+  top: 90%;
+  left: -110%;
+  width: 120%;
+  height: 120%;
+  background-color: #7e7e7e;
+  transform: rotate(45deg);
+  content: "";
+  transition: all 500ms ease-in-out;
+}
+.footer-socials__link:hover::before {
+  top: -10%;
+  left: -10%;
+}
+.footer-socials__link:hover .footer-socials__icon {
+  color: #0b0b0b;
+  transform: scale(1.2);
+}
+.footer-socials__icon {
+  font-size: 24px;
+  line-height: 40px;
+  transition: 0.2s linear;
+}
+
+.releases-section {
+  padding: 70px 55px;
+}
+
+.releases-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 40px 40px;
+  width: 100%;
+}
+
+.releases-item {
+  position: relative;
+}
+
+.releases-item-link {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.releases-item-link:hover {
+  transform: scale(1.05);
+}
+
+.releases-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.releases-title__container {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: #FFFFFF;
+  width: 190px;
+  padding-top: 33px;
+  padding-bottom: 10px;
+}
+
+.releases-title {
+  color: #22232B;
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.releases-subtitle {
+  color: #22232B;
+  opacity: 0.5;
+  margin-top: 5px;
+  font-size: 11px;
+}
+
+.releases-rating {
+  margin-top: 30px;
+  height: 11px;
+}
+
+.releases-cost {
+  align-self: flex-end;
+  display: inline-block;
+  margin-top: 16px;
+  color: #22232B;
+  font-size: 16px;
+}
+
+.releases-basket {
+  display: inline-block;
+  border: none;
+  align-self: flex-end;
+  margin-top: 17px;
+  transition: all 0.3s ease;
+  background-color: white;
+}
+
+.releases-basket:hover {
+  transform: scale(1.1);
+}
+
+.releases-basket__img {
+  width: 24px;
+  height: 24px;
+}
+
+@media screen and (max-width: 992px) {
+  main {
+    overflow: hidden;
+  }
+
+  .releases-section {
+    padding: 50px 16px;
+  }
+}
+@media screen and (max-width: 568px) {
+  .releases-container {
+    gap: 26px 16px;
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */
