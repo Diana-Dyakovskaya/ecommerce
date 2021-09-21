@@ -1,0 +1,58 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+header {
+  background-color: #ffffff;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+html {
+  font-family: "Poppins", "Arial", sans-serif;
+}
+
+a {
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+}
+
+
+li {
+  text-decoration: none;
+  list-style-type: none;
+}
+
+button {
+  outline: 0 !important;
+}
+
+::placeholder {
+  /* Firefox, Chrome, Opera */
+  color: #7e7e7e;
+}
+
+input {
+  &:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #7e7e7e;
+  }
+
+  &::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #7e7e7e;
+  }
+}
+
+
+/* Изображения */
+
+.infinite-image {
+  width: 100%;
+  object-fit: contain;
+}

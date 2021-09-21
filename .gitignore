@@ -1,0 +1,21 @@
+.DS_Store
+.idea
+
+*.log
+npm-debug.*
+node_modules/
+.sass-cache/
+*.map
+
+#Project generated folders
+.tmp
+dist
+
+#Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*

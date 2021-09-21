@@ -1,0 +1,17 @@
+export default {
+  siteName: 'Infinite Selection',
+  prod: 'dist',
+  dev: '.tmp',
+  src: './src',
+  app: './src/app',
+  htmlPages: 'pages',
+  pathStyles: 'styles',
+  pathJS: 'scripts',
+  pathHTML: 'html',
+  pathDB: 'db',
+  pathAssets: 'assets',
+  pathPreviews: 'previews',
+  pathTemplateDev: './gulp/config/template-dev.html',
+  pathTemplateBuild: './gulp/config/template-build.html',
+  useWEBP: false,
+}

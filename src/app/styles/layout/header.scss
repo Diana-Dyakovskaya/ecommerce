@@ -1,0 +1,53 @@
+.header-main {
+  $side-base: 135px;
+
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+  font-size: .875rem;
+  background-color: $color-white;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: box-shadow .3s ease;
+
+  &.scroll {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+  }
+
+  &__brand {
+    flex: 0 1 $side-base;
+  }
+
+  &__toggle {
+    @include media(tabletSmall, up) {
+      display: none;
+    }
+  }
+
+  &__nav {}
+
+  &__nav-list {
+    display: flex;
+    align-items: center;
+    @include flex-gap(25px);
+  }
+
+  &__actions {
+    @include media(tablet, up) {
+      flex: 0 1 $side-base;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      @include flex-gap(10px);
+    }
+    @include media(tablet) {
+      display: none;
+    }
+  }
+}
