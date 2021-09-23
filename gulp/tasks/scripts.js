@@ -19,9 +19,9 @@ export const scripts = () => {
         bundle: true,
         minify: $.conf.isProd,
         sourcemap: !$.conf.isProd,
-        loader: {
-          '.ts': 'ts',
-        },
+        // loader: {
+        //   '.ts': 'ts',
+        // },
         // format: "esm",
         platform: 'browser',
         target: ['es6'],

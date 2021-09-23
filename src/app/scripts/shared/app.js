@@ -1,10 +1,10 @@
-export const app = (): void => {
+export const app = () => {
   document.addEventListener('DOMContentLoaded', () => {
     // Add class to header on scroll
     const header = document.querySelector('.js-header')
 
     window.addEventListener('scroll', () => {
-      const y: number = window.scrollY
+      const y = window.scrollY
 
       y > 1 ? header.classList.add('scroll') : header.classList.remove('scroll')
     })
@@ -12,7 +12,7 @@ export const app = (): void => {
     // Search
 
     // Фильтрация по ключевым словам в поиске
-    const inputSearch: HTMLInputElement = document.querySelector('.search-input')
+    const inputSearch = document.querySelector('.search-input')
     const wrapper = document.querySelector('.sneakers-browse-container')
     const browseItem = document.querySelectorAll('.browse-item')
 
@@ -20,7 +20,7 @@ export const app = (): void => {
       let counter = 0
       const p = document.createElement('p')
       p.classList.add('added')
-      p.textContent = `We tried hard and couldn't find anything...  But you can hire Eugene, if you like his work :)`
+      p.textContent = "We tried hard and couldn't find anything...  But you can hire Eugene, if you like his work :)"
 
       browseItem.forEach((e) => {
         if (e.hasAttribute('hidden')) {
@@ -42,7 +42,7 @@ export const app = (): void => {
         const filter = inputSearch.value.trim().toUpperCase()
 
         for (let i = 0; i < browseItem.length; i++) {
-          const browseItemTitle: HTMLElement = browseItem[i].querySelector('.releases-title')
+          const browseItemTitle = browseItem[i].querySelector('.releases-title')
           const browseItemTitleText = browseItemTitle.textContent || browseItemTitle.innerText
           const checkBrowseItem = browseItemTitleText.trim().toUpperCase().indexOf(filter) > -1
 
