@@ -5,49 +5,49 @@
         "img": "room_1.jpg",
         "title": "Coombes",
         "subtitle": "Lounge",
-        "rating": "rating_4stars.png",
+        "rating": "4",
         "price": "2,600"
       },
       {
         "img": "room_2.jpg",
         "title": "Keeve Set",
         "subtitle": "Table & Chairs",
-        "rating": "rating_4stars.png",
+        "rating": "4",
         "price": "590"
       },
       {
         "img": "room_3.jpg",
         "title": "Nillè",
         "subtitle": "Armchair",
-        "rating": "rating_5stars.png",
+        "rating": "5",
         "price": "950"
       },
       {
         "img": "room_4.jpg",
         "title": "Blanko",
         "subtitle": "Side Table",
-        "rating": "rating_4stars.png",
+        "rating": "4",
         "price": "90"
       },
       {
         "img": "room_5.jpg",
         "title": "Momo",
         "subtitle": "Shelves",
-        "rating": "rating_4stars.png",
+        "rating": "4",
         "price": "890"
       },
       {
         "img": "room_6.jpg",
         "title": "Penemillè",
         "subtitle": "Chair",
-        "rating": "rating_4stars.png",
+        "rating": "4",
         "price": "120"
       },
       {
         "img": "room_7.jpg",
         "title": "Kappu",
         "subtitle": "Shelves",
-        "rating": "rating_4stars.png",
+        "rating": "4",
         "price": "420"
       }
     ]

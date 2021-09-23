@@ -4,7 +4,21 @@
     <div class="releases-title__container">
       <h2 class="releases-title">{{title}}</h2>
       <p class="releases-subtitle">{{subtitle}}</p>
-      <img class="releases-rating" src="../assets/images/home/{{rating}}" alt="rating">
+      <form action='#' class='releases-form'>
+        <div class='releases-rating rating'>
+          <div class='rating__body'>
+            <div class='rating__active'></div>
+            <div class='rating__items'>
+              <input type='radio' class='rating__item' value='1' name='rating'>
+              <input type='radio' class='rating__item' value='2' name='rating'>
+              <input type='radio' class='rating__item' value='3' name='rating'>
+              <input type='radio' class='rating__item' value='4' name='rating'>
+              <input type='radio' class='rating__item' value='5' name='rating'>
+            </div>
+          </div>
+          <div class='rating__value'>{{rating}}</div>
+        </div>
+      </form>
     </div>
     <p class="releases-cost">&#36;{{price}}</p>
     <button type='button' class="releases-basket">
