@@ -1,4 +1,125 @@
 .header-main {
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+}
+
+.header__container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.header-menu__items {
+  display: flex;
+  flex-wrap: wrap;
+}
+.header-menu__item {
+  margin-left: 42px;
+}
+
+.header-menu__link {
+  color: #22232b;
+  font-weight: 800;
+  font-size: 13px;
+  line-height: 18px;
+  text-transform: uppercase;
+
+}
+[type='button'] {
+  border: none;
+  cursor: pointer;
+  background-color: none;
+}
+.header__basket {
+  margin-left: auto;
+}
+.header__login {
+  text-transform: uppercase;
+  margin-left: 40px;
+}
+.header__mobile-menu {
+  width: 26px;
+  height: 20px;
+  display: none;
+}
+
+.header__burger {
+  display: inline-block;
+  width: 24px;
+  height: 2px;
+  background-color: #1b1b1b;
+  box-shadow: 0 -5px, 0 -10px;
+}
+
+@include media(mobile) {
+
+  .header__logo {
+    position: relative;
+    display: block;
+    left: -16px;
+    width: 60px;
+    height: 60px;
+  }
+  .header-menu {
+    display: none;
+  }
+  .header__login {
+    display: none;
+  }
+  .header__mobile-menu {
+    display: block;
+    margin-left: 40px;
+  }
+  .header-mobile-visible {
+    background-color: #1b1b1b;
+    .header-menu {
+      display: block;
+      position: absolute;
+      left: -16px;
+      top: 60px;
+      right: -16px;
+      background-color: #1b1b1b;
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+    .header-menu__items {
+      flex-direction: column;
+      margin-left: -24px;
+    }
+    .header-menu__item:not(:first-child) {
+      margin-top: 42px;
+    }
+    .header-menu__link {
+      color: #ffffff;
+    }
+    .header__basket {
+      height: 24px;
+      width: 24px;
+      background: url("../assets/images/header/basket-white.png") 0 0/ 24px 24px no-repeat;
+    }
+    .header__basket_img {
+      display: none;
+    }
+    .header__mobile-menu {
+      background-color: #1b1b1b;
+    }
+    .header__burger {
+      box-shadow: none;
+      background-color: #ffffff;
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .header__burger::after {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 2px;
+      background-color: #ffffff;
+      transform: rotate(-90deg) translate(12px, 0);
+    }
+  }
+}
+/*.header-main {
   $side-base: 135px;
 
   position: sticky;
@@ -51,3 +172,4 @@
     }
   }
 }
+ */

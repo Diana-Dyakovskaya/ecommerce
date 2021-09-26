@@ -1,9 +1,9 @@
 .container {
-  padding: 0 55px;
+  padding: 0 56px 0 58px;
   margin: 0 auto;
 
-  @media (min-width: 1300px) {
-    max-width: 1270px;
+  @include media(mobile) {
+    padding: 0 16px;
   }
 }
 

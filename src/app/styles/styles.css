@@ -118,12 +118,12 @@ input::-ms-input-placeholder {
 }
 
 .container {
-  padding: 0 55px;
+  padding: 0 56px 0 58px;
   margin: 0 auto;
 }
-@media (min-width: 1300px) {
+@media (max-width: 767px) {
   .container {
-    max-width: 1270px;
+    padding: 0 16px;
   }
 }
 
@@ -139,66 +139,184 @@ input::-ms-input-placeholder {
   position: sticky;
   top: 0;
   z-index: 10000;
-  font-size: 0.875rem;
-  background-color: #fff;
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-  transition: box-shadow 0.3s ease;
-}
-.header-main.scroll {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-.header-main__content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 0;
-}
-.header-main__brand {
-  flex: 0 1 135px;
-}
-@media (min-width: 1024px) {
-  .header-main__toggle {
-    display: none;
-  }
-}
-.header-main__nav-list {
-  display: flex;
-  align-items: center;
-}
-@supports (gap: 10px) and (display: flex) {
-  .header-main__nav-list {
-    gap: 25px;
-  }
-}
-@supports not ((gap: 10px) and (display: flex)) {
-  .header-main__nav-list > * + * {
-    margin-left: 25px;
-  }
-}
-@media (min-width: 1260px) {
-  .header-main__actions {
-    flex: 0 1 135px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-  }
-  @supports (gap: 10px) and (display: flex) {
-    .header-main__actions {
-      gap: 10px;
-    }
-  }
-  @supports not ((gap: 10px) and (display: flex)) {
-    .header-main__actions > * + * {
-      margin-left: 10px;
-    }
-  }
-}
-@media (max-width: 1259px) {
-  .header-main__actions {
-    display: none;
-  }
 }
 
+.header__container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.header-menu__items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.header-menu__item {
+  margin-left: 42px;
+}
+
+.header-menu__link {
+  color: #22232b;
+  font-weight: 800;
+  font-size: 13px;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+
+[type=button] {
+  border: none;
+  cursor: pointer;
+  background-color: none;
+}
+
+.header__basket {
+  margin-left: auto;
+}
+
+.header__login {
+  text-transform: uppercase;
+  margin-left: 40px;
+}
+
+.header__mobile-menu {
+  width: 26px;
+  height: 20px;
+  display: none;
+}
+
+.header__burger {
+  display: inline-block;
+  width: 24px;
+  height: 2px;
+  background-color: #1b1b1b;
+  box-shadow: 0 -5px, 0 -10px;
+}
+
+@media (max-width: 767px) {
+  .header__logo {
+    position: relative;
+    display: block;
+    left: -16px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .header-menu {
+    display: none;
+  }
+
+  .header__login {
+    display: none;
+  }
+
+  .header__mobile-menu {
+    display: block;
+    margin-left: 40px;
+  }
+
+  .header-mobile-visible {
+    background-color: #1b1b1b;
+  }
+  .header-mobile-visible .header-menu {
+    display: block;
+    position: absolute;
+    left: -16px;
+    top: 60px;
+    right: -16px;
+    background-color: #1b1b1b;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .header-mobile-visible .header-menu__items {
+    flex-direction: column;
+    margin-left: -24px;
+  }
+  .header-mobile-visible .header-menu__item:not(:first-child) {
+    margin-top: 42px;
+  }
+  .header-mobile-visible .header-menu__link {
+    color: #ffffff;
+  }
+  .header-mobile-visible .header__basket {
+    height: 24px;
+    width: 24px;
+    background: url("../assets/images/header/basket-white.png") 0 0/24px 24px no-repeat;
+  }
+  .header-mobile-visible .header__basket_img {
+    display: none;
+  }
+  .header-mobile-visible .header__mobile-menu {
+    background-color: #1b1b1b;
+  }
+  .header-mobile-visible .header__burger {
+    box-shadow: none;
+    background-color: #ffffff;
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .header-mobile-visible .header__burger::after {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 2px;
+    background-color: #ffffff;
+    transform: rotate(-90deg) translate(12px, 0);
+  }
+}
+/*.header-main {
+  $side-base: 135px;
+
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+  font-size: .875rem;
+  background-color: $color-white;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: box-shadow .3s ease;
+
+  &.scroll {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+  }
+
+  &__brand {
+    flex: 0 1 $side-base;
+  }
+
+  &__toggle {
+    @include media(tabletSmall, up) {
+      display: none;
+    }
+  }
+
+  &__nav {}
+
+  &__nav-list {
+    display: flex;
+    align-items: center;
+    @include flex-gap(25px);
+  }
+
+  &__actions {
+    @include media(tablet, up) {
+      flex: 0 1 $side-base;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      @include flex-gap(10px);
+    }
+    @include media(tablet) {
+      display: none;
+    }
+  }
+}
+ */
 .footer-main {
   color: #777777;
   background: #0a0a0a;
@@ -415,10 +533,6 @@ input::-ms-input-placeholder {
   transition: 0.2s linear;
 }
 
-.releases-section {
-  padding: 70px 55px;
-}
-
 .releases-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -451,20 +565,20 @@ input::-ms-input-placeholder {
   position: absolute;
   left: 0;
   bottom: 0;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   width: 190px;
   padding-top: 33px;
   padding-bottom: 10px;
 }
 
 .releases-title {
-  color: #22232B;
+  color: #22232b;
   font-weight: 800;
   font-size: 16px;
 }
 
 .releases-subtitle {
-  color: #22232B;
+  color: #22232b;
   opacity: 0.5;
   margin-top: 5px;
   font-size: 11px;
@@ -499,7 +613,7 @@ input::-ms-input-placeholder {
   height: 100%;
   top: 0;
   left: 0;
-  color: black;
+  color: #000000;
 }
 
 .rating__items {
@@ -515,12 +629,13 @@ input::-ms-input-placeholder {
   flex: 0 0 20%;
   height: 100%;
   opacity: 0;
+  cursor: pointer;
 }
 
 .rating__body::before {
   content: "☆☆☆☆☆";
   display: block;
-  color: black;
+  color: #000000;
 }
 
 .rating__value {
@@ -531,7 +646,7 @@ input::-ms-input-placeholder {
   align-self: flex-end;
   display: inline-block;
   margin-top: 16px;
-  color: #22232B;
+  color: #22232b;
   font-size: 16px;
 }
 
@@ -541,7 +656,7 @@ input::-ms-input-placeholder {
   align-self: flex-end;
   margin-top: 17px;
   transition: all 0.3s ease;
-  background-color: white;
+  background-color: #ffffff;
 }
 
 .releases-basket:hover {
@@ -556,10 +671,6 @@ input::-ms-input-placeholder {
 @media screen and (max-width: 992px) {
   main {
     overflow: hidden;
-  }
-
-  .releases-section {
-    padding: 50px 16px;
   }
 }
 @media screen and (max-width: 568px) {

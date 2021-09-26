@@ -1,16 +1,18 @@
 {{!Home}}
 
 {{> layout/head page-title="Ecommerce"}}
-
+{{> blocks/header }}
 
 <main class="page-content__main">
-<section class='releases-section'>
-  <div class='releases-container'>
-    {{#each home.products}}
-      {{>blocks/product-card}}
-    {{/each}}
+  <div class='container'>
+    <section class='releases-section'>
+      <div class='releases-container'>
+        {{#each home.products}}
+          {{>blocks/product-card}}
+        {{/each}}
+      </div>
+    </section>
   </div>
-</section>
 </main>
 
 

@@ -1,7 +1,7 @@
 
 
 .releases-section {
-  padding: 70px 55px;
+
 }
 
 .releases-container {
@@ -10,9 +10,11 @@
   gap: 40px 40px;
   width: 100%;
 }
+
 .releases-item {
   position: relative;
 }
+
 .releases-item-link {
   display: flex;
   flex-direction: column;
@@ -29,37 +31,43 @@
   height: auto;
   object-fit: contain;
 }
+
 .releases-title__container {
   position: absolute;
   left: 0;
   bottom: 0;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   width: 190px;
   padding-top: 33px;
   padding-bottom: 10px;
 }
 
 .releases-title {
-  color: #22232B;
+  color: #22232b;
   font-weight: 800;
   font-size: 16px;
 }
+
 .releases-subtitle {
-  color: #22232B;
+  color: #22232b;
   opacity: 0.5;
   margin-top: 5px;
   font-size: 11px;
 }
+
 .releases-form {
   margin-top: 30px;
 }
+
 .releases-rating {
   display: flex;
   align-items: flex-end;
 }
+
 .rating__body {
   position: relative;
 }
+
 .rating__active {
   position: absolute;
   width: 0%;
@@ -68,6 +76,7 @@
   left: 0;
   overflow: hidden;
 }
+
 .rating__active::before {
   content: "★★★★★";
   position: absolute;
@@ -75,8 +84,9 @@
   height: 100%;
   top: 0;
   left: 0;
-  color: black;
+  color: #000000;
 }
+
 .rating__items {
   display: flex;
   position: absolute;
@@ -85,47 +95,53 @@
   top: 0;
   left: 0;
 }
+
 .rating__item {
   flex: 0 0 20%;
   height: 100%;
   opacity: 0;
+  cursor: pointer;
 }
+
 .rating__body::before {
   content: "☆☆☆☆☆";
   display: block;
-  color: black;
+  color: #000000;
 }
+
 .rating__value {
   display: none;
 }
+
 .releases-cost {
   align-self: flex-end;
   display: inline-block;
   margin-top: 16px;
-  color: #22232B;
+  color: #22232b;
   font-size: 16px;
 }
+
 .releases-basket {
   display: inline-block;
   border: none;
   align-self: flex-end;
   margin-top: 17px;
   transition: all 0.3s ease;
-  background-color: white;
+  background-color: #ffffff;
 }
+
 .releases-basket:hover {
   transform: scale(1.1);
 }
+
 .releases-basket__img {
   width: 24px;
   height: 24px;
 }
+
 @media screen and (max-width: 992px) {
   main {
     overflow: hidden;
-  }
-  .releases-section {
-    padding: 50px 16px;
   }
 }
 
