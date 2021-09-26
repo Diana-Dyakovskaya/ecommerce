@@ -2,7 +2,35 @@
 
 {{> layout/head page-title="Ecommerce"}}
 {{> blocks/header }}
-
+<section class='search'>
+  <div class='container'>
+    <div class='search-container'>
+      <div class='search__bar'>
+        <button class='search__button' type='button'>
+          <img class='search__loupe' src='../assets/images/home/search.png' width='42' height='40'>
+        </button>
+        <div class='search__scan'>
+          <form class='search__form' action='#' method='post' enctype='multipart/form-data'>
+            <input class='search__input' type='search' placeholder='living room'>
+          </form>
+          <p class='search__powered'>
+            Powered by
+            <b class='search__site'>Sajari.com</b>
+            <img  class='search__logo' src='../assets/images/home/sajari_logo.png' width='16' height='16'>
+          </p>
+        </div>
+      </div>
+      <div class='search__match match'>
+        <div class='match-container'>
+          <p class='match__title'>Best match</p>
+          <button class='match__button' type='button'>
+            <img class='match__arrow' src='../assets/images/home/arrow.png' width='16' height='8'>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <main class="page-content__main">
   <div class='container'>
     <section class='releases-section'>
