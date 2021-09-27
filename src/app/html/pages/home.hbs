@@ -35,6 +35,28 @@
   <div class='container'>
     <section class='releases-section'>
       <div class='releases-container'>
+        <div class='filters'>
+          <div class="accordeon js-accord">
+            <div class="accordeon__header">
+              <button type="button" class="accordeon__button js-accord__btn">
+                <span class='accordeon__title'>Filters</span>
+                <img class='accordeon__arrow' src='../assets/images/home/arrow.png' width='16' height='8'>
+              </button>
+            </div>
+            <div class="accordeon__body js-accord__content">
+              <h2 class='accordeon__name'>Filter by</h2>
+              <div class='select__container'>
+                <div class='select' id="select_1"></div>
+                <div class='select' id="select_2"></div>
+                <div class='select' id="select_3"></div>
+              </div>
+              <div class='price'>
+                <p class='price__title'>Price Range</p>
+                <!--Здесь должен быть двойной ползунок-->
+              </div>
+            </div>
+          </div>
+        </div>
         {{#each home.products}}
           {{>blocks/product-card}}
         {{/each}}
