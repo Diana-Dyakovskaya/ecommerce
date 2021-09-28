@@ -57,13 +57,20 @@ export const app = () => {
     //Аккордеон
     const accord = document.querySelector('.js-accord')
     const accordArrow = document.querySelector('.accordeon__arrow')
-    accord.addEventListener('click', (event) => {
-      if (!event.target.className.includes('js-accord__btn')) {
-        return
-      }
-
-      showBody(event.target.closest('.js-accord'))
-    })
+    accord.addEventListener(
+      'click',
+      (event) => {
+        if (
+          !event.target.className.includes('js-accord__btn') &&
+          !event.target.className.includes('accordeon__title') &&
+          !event.target.className.includes('accordeon__arrow')
+        ) {
+          return
+        }
+        showBody(event.target.closest('.js-accord'))
+      },
+      true
+    )
     function showBody(el) {
       el.classList.toggle('active')
       accordArrow.classList.toggle('arrow__down')
@@ -123,7 +130,7 @@ export const app = () => {
       clickHandler(event) {
         const { type } = event.target.dataset
 
-        if (type === 'input') {
+        if (type === 'input' || type === 'value' || type === 'arrow') {
           this.toggle()
         } else if (type === 'item') {
           const id = event.target.dataset.id
