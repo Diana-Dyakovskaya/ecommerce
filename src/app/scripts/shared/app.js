@@ -56,6 +56,7 @@ export const app = () => {
 
     //Аккордеон
     const accord = document.querySelector('.js-accord')
+    const accordArrow = document.querySelector('.accordeon__arrow')
     accord.addEventListener('click', (event) => {
       if (!event.target.className.includes('js-accord__btn')) {
         return
@@ -65,6 +66,7 @@ export const app = () => {
     })
     function showBody(el) {
       el.classList.toggle('active')
+      accordArrow.classList.toggle('arrow__down')
     }
     //Селектор
     const getTemplate = (data = [], placeholder, selectedId) => {
