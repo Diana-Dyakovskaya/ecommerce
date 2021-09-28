@@ -29,7 +29,7 @@ export const app = () => {
       }
       // Возможность указать оценку
       function setRating(rating) {
-        const ratingItems = rating.querySelector('.rating__item')
+        const ratingItems = rating.querySelectorAll('.rating__item')
         for (let index = 0; index < ratingItems.length; index++) {
           const ratingItem = ratingItems[index]
           ratingItem.addEventListener('mouseenter', function () {
