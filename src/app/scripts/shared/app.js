@@ -195,7 +195,7 @@ export const app = () => {
       ],
       onSelect(item) {
         console.log('Selected Item', item)
-      },
+      }
     })
     const select_2 = new Select('#select_2', {
       placeholder: 'Color',
@@ -210,7 +210,7 @@ export const app = () => {
       ],
       onSelect(item) {
         console.log('Selected Item', item)
-      },
+      }
     })
     const select_3 = new Select('#select_3', {
       placeholder: 'Category',
@@ -225,7 +225,7 @@ export const app = () => {
       ],
       onSelect(item) {
         console.log('Selected Item', item)
-      },
+      }
     })
   })
 }
